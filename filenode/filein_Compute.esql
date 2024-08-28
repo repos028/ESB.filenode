@@ -1,0 +1,17 @@
+
+
+CREATE COMPUTE MODULE filein_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE inref REFERENCE TO InputRoot.XMLNSC.Data.student;
+		DECLARE text CHAR '';
+		
+		SET text= coalesce(inref.name,'')||','||coalesce(inref.std,'')||','||coalesce(inref.marks,'');
+		
+		SET OutputRoot.BLOB.BLOB = CAST(text AS BLOB CCSID 1208);
+	
+		
+		
+		
+	END;
+END MODULE;
